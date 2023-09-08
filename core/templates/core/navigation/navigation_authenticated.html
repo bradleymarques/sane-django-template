@@ -1,0 +1,38 @@
+{% load i18n %}
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'rate-my-pet:pet-pictures-list' %}">{% translate "All pets" %}</a>
+  </li>
+</ul>
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+      <span>{% include "users/user_image_circle.html" with user=user %}</span>
+      <span class="text-decoration-none text-body">{{ user }}</span></a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      {% if user.is_superuser %}
+        <li>
+          <a class="dropdown-item" href={% url 'admin:index' %}>{% translate "Site Administration" %}</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+      {% endif %}
+      <li>
+        <a href="{% url 'users:user-preferences-update' user.user_preferences.pk %}"
+           class="dropdown-item">{% translate "Preferences" %}</a>
+        <a href="{% url 'users:password-change' %}" class="dropdown-item">{% translate "Change password" %}</a>
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <a href="{% url 'users:logout' %}" class="dropdown-item">{% translate "Logout" %}</a>
+      </li>
+    </ul>
+  </li>
+</ul>

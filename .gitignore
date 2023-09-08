@@ -1,0 +1,24 @@
+# Mac poo:
+.DS_Store
+
+# IDE stuff:
+.vscode
+
+# Ignore environment variables
+.env
+
+# Ignore Python virtual environment
+.venv
+
+# Ignore database
+*.sqlite3
+
+# Ingore uploaded media:
+uploaded_media/
+
+# Ignore testing and cache folders
+**/__pycache__
+.pytest_cache
+
+# Ignore cached CSS:
+sane_django_template/compress_root/CACHE/**

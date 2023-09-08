@@ -1,0 +1,1 @@
+from .home_page_redirect_view import HomePageRedirectView

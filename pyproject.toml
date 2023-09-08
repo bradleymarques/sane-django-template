@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "sane_django_template"
+version = "0.0.1"
+description = "A sane Django template"
+authors = ["Bradley Marques <bradleyrcmarques@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11.5"
+Django = "4.2.5"
+django-bootstrap-v5 = "1.0.11"
+djlint = "^1.31.1"
+django-compressor = "^4.4"
+django-libsass = "^0.9"
+factory-boy = "^3.2.1"
+pytest-django = "^4.5.2"
+django-imagekit = "^4.1.0"
+pillow = "9.5.0"               # Can't upgrade to 10.0.0 until django-imagekit supports it
+opencv-python = "^4.8.0.74"
+pylibmagic = "^0.4.0"
+python-magic = "^0.4.27"
+ipython = "^8.14.0"
+django-verify-email = "^2.0.3"
+rules = "^3.3"
+pytest-env = "^0.8.2"
+lazy-import = "^0.2.2"
+
+[tool.poetry.dev-dependencies]
+black = "22.3.0"
+
+[tool.poetry.group.dev.dependencies]
+freezegun = "^1.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

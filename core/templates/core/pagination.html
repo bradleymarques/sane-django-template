@@ -1,0 +1,4 @@
+{% load bootstrap5 %}
+{% if page_obj and page_obj.paginator.num_pages > 1 %}
+  <div class="row m-4">{% bootstrap_pagination page_obj justify_content="center" %}</div>
+{% endif %}

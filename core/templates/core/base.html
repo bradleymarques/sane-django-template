@@ -1,0 +1,46 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+{% load compress %}
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Hub Site Template">
+    <meta name="keywords" content="Hub">
+    <meta name="author" content="Bradley Marques">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head_css %}
+      {% compress css %}
+        <link rel="stylesheet"
+              type="text/x-scss"
+              href="{% static 'core/css/theme.scss' %}">
+      {% endcompress %}
+    {% endblock head_css %}
+    {% block head_javascript %}
+      {% bootstrap_javascript %}
+    {% endblock head_javascript %}
+    <title>
+      {% block title %}
+        {{ APP_NAME }}
+      {% endblock title %}
+    </title>
+  </head>
+  <body data-bs-theme={{ BOOTSTRAP_THEME }} class="min-vh-100 d-flex flex-column">
+    {% block body %}
+      {% block header %}
+        {% include "core/navigation/navigation_base.html" %}
+      {% endblock header %}
+      <div class="container-fluid flex-grow-1">
+        {% include "core/messages.html" %}
+        <main>
+          {% block main %}
+          {% endblock main %}
+        </main>
+      </div>
+      {% block footer %}
+        {% include "core/footer.html" %}
+      {% endblock footer %}
+    {% endblock body %}
+    <script src="{% static "core/javascript/auto_dark_mode.js" %}" type="text/javascript"></script>
+  </body>
+</html>

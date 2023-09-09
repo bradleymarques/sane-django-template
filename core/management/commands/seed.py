@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from rate_my_pet.factories import PetPictureWithCommentsAndVotesFactory
 
 from users.factories import SuperuserFactory, UserFactory
 
@@ -18,6 +17,3 @@ class Command(BaseCommand):
             plaintext_password="password",
             email="user@example.com",
         )
-
-        for _i in range(10):
-            PetPictureWithCommentsAndVotesFactory.create()

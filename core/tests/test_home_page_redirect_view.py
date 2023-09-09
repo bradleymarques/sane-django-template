@@ -18,5 +18,11 @@ class TestHomePageRedirectView(BaseTest):
 
         response = self.client.get("/")
 
-        self.assertRedirects(response, reverse("rate-my-pet:pet-pictures-list"))
+        self.assertRedirects(
+            response,
+            reverse(
+                "users:user-preferences-update",
+                kwargs={"pk": user.pk},
+            ),
+        )
         self.assertTemplateUsed("user_detail.html")

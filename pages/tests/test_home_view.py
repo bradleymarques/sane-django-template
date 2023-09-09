@@ -21,6 +21,6 @@ class TestHomeView(BaseTest):
         user: User = UserFactory.create()
         self.login(user)
 
-        expected_url = reverse("rate-my-pet:pet-pictures-list")
+        expected_url = reverse("users:user-preferences-update", kwargs={"pk": user.pk})
         response = self.client.get(reverse("pages:home"), follow=True)
         self.assertRedirects(response, expected_url, HTTPStatus.FOUND, HTTPStatus.OK)

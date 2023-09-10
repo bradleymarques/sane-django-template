@@ -11,7 +11,7 @@ A sane template to use as the starting point when creating [Django](https://www.
 ## Current Feature Set
 
 - 🐳 Container-first (using Docker)
-- 🎨 Bootstrap 5.3 with [django-libsass](https://github.com/torchbox/django-libsass) and [django-compressor](https://github.com/django-compressor/django-compressor) meaning easy theme customisation using scss
+- 🎨 Bootstrap 5.3 with [django-libsass](https://github.com/torchbox/django-libsass) and [django-compressor](https://github.com/django-compressor/django-compressor)
 - 🏡 There is a single static page (home)
 - 📧 Users can register on the site registration with email verification
 - 🔐 Change password and forgot password flow in case of forgotten password
@@ -21,6 +21,9 @@ A sane template to use as the starting point when creating [Django](https://www.
 - 🧪 Tests with Pytest
 - 🐙 GitHub action to automate tests
 - 🔃 Pre-commit hooks
+  - [black](https://github.com/psf/black)
+  - [pycln](https://hadialqattan.github.io/pycln/)
+  - [isort](https://pycqa.github.io/isort/)
 
 ## Installing
 

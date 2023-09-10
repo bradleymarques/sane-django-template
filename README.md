@@ -1,57 +1,26 @@
 # Sane Django Template <!-- omit in toc -->
 
-- [Current (and planned) Feature Set](#current-and-planned-feature-set)
-  - [Authentication](#authentication)
-  - [Authorization](#authorization)
-  - [Community](#community)
-  - [Notifications](#notifications)
-  - [Styling](#styling)
-  - [Other](#other)
+- [Current Feature Set](#current-feature-set)
 - [Installing](#installing)
 - [Environment Variables](#environment-variables)
 - [Useful Scripts](#useful-scripts)
 - [Testing](#testing)
-- [Other commands](#other-commands)
 
-A sane, feature-rich template for creating [Django](https://www.djangoproject.com/) web apps.
+A sane template to use as the starting point when creating [Django](https://www.djangoproject.com/) web apps.
 
-## Current (and planned) Feature Set
+## Current Feature Set
 
-### Authentication
-
-- [x] Site registration with email verification
-- [x] Reset/forgot password flow in case of forgotten password
-- [ ] Two-factor authentication using an authentication app such as "Authy" or "Google Authenticator"
-
-### Authorization
-
-- [x] Per-record authorization using [django-rules](https://github.com/dfunckt/django-rules)
-
-### Community
-
-- [x] Users can upload a profile image
-- [x] Comment system
-- [ ] Voting system (possibly using [django-voting](https://github.com/jazzband/django-voting))
-- [ ] Users can report abusive content and admins can review and remove the content
-- [ ] Admins can ban users
-- [ ] Audits for admins (possibly using [django-reversion](https://django-reversion.readthedocs.io/en/latest/))
-- [ ] Private messaging with real-time communication (possibly using [django-channels](https://github.com/django/channels))
-
-### Notifications
-
-- [ ] In-app
-- [ ] EMail
-
-### Styling
-
-- [x] Bootstrap 5.3 with [django-libsass](https://github.com/torchbox/django-libsass) and [django-compressor](https://github.com/django-compressor/django-compressor) meaning easy theme customisation using scss
-- [x] User preferences page to pick between dark mode, light mode, and auto
-
-### Other
-
-- [x] Testing using Pytest, and GitHub action to automate tests
-- [x] Container-first (using Docker)
-- [x] Pre-commit hooks
+- 🐳 Container-first (using Docker)
+- 🎨 Bootstrap 5.3 with [django-libsass](https://github.com/torchbox/django-libsass) and [django-compressor](https://github.com/django-compressor/django-compressor) meaning easy theme customisation using scss
+- 🏡 There is a single static page (home)
+- 📧 Users can register on the site registration with email verification
+- 🔐 Change password and forgot password flow in case of forgotten password
+- 🔑 Per-record authorization using [django-rules](https://github.com/dfunckt/django-rules)
+- 📸 Users can upload a profile image
+- 🌗 User preferences page to pick between dark mode, light mode, and auto
+- 🧪 Tests with Pytest
+- 🐙 GitHub action to automate tests
+- 🔃 Pre-commit hooks
 
 ## Installing
 
@@ -63,13 +32,17 @@ A sane, feature-rich template for creating [Django](https://www.djangoproject.co
     poetry config virtualenvs.in-project true
     ```
 
-3. Run:
+3. Run this (will create a `.venv` folder in the project directory, and this folder is gitignored):
 
     ```zsh
     poetry install
     ```
 
-The final command will create a `.venv` folder in the project directory, and this folder is gitignored.
+4. Install pre-commit hooks:
+
+    ```zsh
+    pre-commit install
+    ```
 
 ## Environment Variables
 
@@ -93,13 +66,15 @@ To save on typing, I have included the following useful scripts:
 
 You can open the scripts to see what they do, but they basically mostly call `docker compose`.
 
+Note you can also run the server without Docker with:
+
+```zsh
+python manage.py runserver
+```
+
 ## Testing
 
 ```zsh
-source .venv/bin/activate
+poetry shell
 pytest
 ```
-
-## Other commands
-
-Starting a new Django app: `poetry run python manage.py startapp <NEW_APP_NAME>`

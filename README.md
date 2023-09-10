@@ -19,6 +19,7 @@ A sane template to use as the starting point when creating [Django](https://www.
 - 📸 Users can upload a profile image
 - 🌗 User preferences page to pick between dark mode, light mode, and auto
 - 🧪 Tests with Pytest
+- 🧪 Code coverage with [coverage](https://github.com/nedbat/coveragepy)
 - 🐙 GitHub action to automate tests
 - 🔃 Pre-commit hooks
   - [black](https://github.com/psf/black)

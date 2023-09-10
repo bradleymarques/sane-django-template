@@ -56,7 +56,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           source .venv/bin/activate
-          source .env.example
           coverage run --source="." -m pytest .
 
       - name: Post code coverage comment to GitHub

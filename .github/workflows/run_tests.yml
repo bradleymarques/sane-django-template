@@ -10,48 +10,57 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      #----------------------------------------------
-      #       check-out repo and set-up python
-      #----------------------------------------------
-      - name: Check out repository
+      - name: Check out repository and install Python
         uses: actions/checkout@v3
       - name: Set up python
         id: setup-python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-      #----------------------------------------------
-      #  -----  install & configure poetry  -----
-      #----------------------------------------------
-      - name: Install Poetry
+
+      - name: Install and configure Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
 
-      #----------------------------------------------
-      #       load cached venv if cache exists
-      #----------------------------------------------
-      - name: Load cached venv
+      - name: Load cached venv if it exists
         id: cached-poetry-dependencies
         uses: actions/cache@v3
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
-      #----------------------------------------------
-      # install dependencies if cache does not exist
-      #----------------------------------------------
-      - name: Install dependencies
+      - name: Install dependencies if cache does not exist
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
 
-      #----------------------------------------------
-      #              run test suite
-      #----------------------------------------------
-      - name: Run tests
+      - name: Check proper code formatting with Black
+        run: |
+          source .venv/bin/activate
+          black . --check
+
+      - name: Check imports ordering with isort
+        uses: isort/isort-action@master
+        with:
+          configuration: "--check-only --diff --profile black"
+          sortPaths: "."
+          requirements-files: "pyproject.toml"
+
+      - name: Check unused imports with pycln
+        run: |
+          source .venv/bin/activate
+          pycln . --check
+
+      - name: Run tests with coverage
         run: |
           source .venv/bin/activate
           source .env.example
-          pytest
+          coverage run --source="backend/" -m pytest backend
+
+      - name: Post code coverage comment to GitHub
+        id: coverage_comment
+        uses: ewjoachim/python-coverage-comment-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

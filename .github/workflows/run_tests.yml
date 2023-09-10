@@ -57,7 +57,7 @@ jobs:
         run: |
           source .venv/bin/activate
           source .env.example
-          coverage run --source="backend/" -m pytest backend
+          coverage run --source="." -m pytest .
 
       - name: Post code coverage comment to GitHub
         id: coverage_comment

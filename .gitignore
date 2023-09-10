@@ -22,3 +22,6 @@ uploaded_media/
 
 # Ignore cached CSS:
 sane_django_template/compress_root/CACHE/**
+
+# Code coverage:
+.coverage

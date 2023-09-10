@@ -75,7 +75,6 @@ TEMPLATES = [
                 "core.context_processors.app_name",
                 "core.context_processors.bootstrap_theme",
                 "core.context_processors.thumbnail_size",
-                "core.context_processors.icons",
             ],
         },
     },
@@ -175,9 +174,11 @@ APPEND_SLASH = True  # Append trailing slash to URLs that don't have them
 
 # Images
 IMAGES = {
-    "THUMBNAIL_WIDTH": int(os.environ.get("IMAGES_THUMBNAIL_WIDTH", 200)),
-    "THUMBNAIL_HEIGHT": int(os.environ.get("IMAGES_THUMBNAIL_HEIGHT", 200)),
-    "THUMBNAIL_JPEG_QUALITY": int(os.environ.get("IMAGES_THUMBNAIL_JPEG_QUALITY", 70)),
+    "THUMBNAIL_WIDTH": int(os.environ.get("IMAGES_THUMBNAIL_WIDTH", "200")),
+    "THUMBNAIL_HEIGHT": int(os.environ.get("IMAGES_THUMBNAIL_HEIGHT", "200")),
+    "THUMBNAIL_JPEG_QUALITY": int(
+        os.environ.get("IMAGES_THUMBNAIL_JPEG_QUALITY", "70")
+    ),
 }
 
 # LOG ALL SQL QUERIES

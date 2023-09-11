@@ -25,3 +25,4 @@ sane_django_template/compress_root/CACHE/**
 
 # Code coverage:
 .coverage
+coverage_html_report

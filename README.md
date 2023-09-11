@@ -5,6 +5,7 @@
 - [Environment Variables](#environment-variables)
 - [Useful Scripts](#useful-scripts)
 - [Testing](#testing)
+- [Test Coverage](#test-coverage)
 
 A sane template to use as the starting point when creating [Django](https://www.djangoproject.com/) web apps.
 
@@ -81,4 +82,16 @@ python manage.py runserver
 ```zsh
 poetry shell
 pytest
+```
+
+## Test Coverage
+
+```zsh
+coverage run -m pytest
+```
+
+Followed by:
+
+```zsh
+coverage html
 ```

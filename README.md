@@ -1,5 +1,7 @@
 # Sane Django Template <!-- omit in toc -->
 
+[![Coverage badge](https://raw.githubusercontent.com/bradleymarques/sane-django-template/python-coverage-comment-action-data/badge.svg)](https://htmlpreview.github.io/?https://github.com/bradleymarques/sane-django-template/blob/python-coverage-comment-action-data/htmlcov/index.html)
+
 - [Current Feature Set](#current-feature-set)
 - [Installing](#installing)
 - [Environment Variables](#environment-variables)

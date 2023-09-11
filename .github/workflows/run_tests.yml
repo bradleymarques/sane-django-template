@@ -71,6 +71,8 @@ jobs:
         uses: ewjoachim/python-coverage-comment-action@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MINIMUM_GREEN: 90
+          MINIMUM_ORANGE: 80
 
       - name: Store Pull Request comment to be posted
         uses: actions/upload-artifact@v3

@@ -10,13 +10,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
-    # Gives the action the necessary permissions for publishing new comments in
-    # pull requests.
-    pull-requests: write
-    # Gives the action the necessary permissions for pushing data to the
-    # python-coverage-comment-action branch, and for editing existing
-    # comments (to avoid publishing multiple comments in the same PR)
-    contents: write
+      # Gives the action the necessary permissions for publishing new comments in
+      # pull requests.
+      pull-requests: write
+      # Gives the action the necessary permissions for pushing data to the
+      # python-coverage-comment-action branch, and for editing existing
+      # comments (to avoid publishing multiple comments in the same PR)
+      contents: write
     steps:
       - name: Check out repository and install Python
         uses: actions/checkout@v3
@@ -68,7 +68,7 @@ jobs:
 
       - name: Post code coverage comment to GitHub
         id: coverage_comment
-        uses: ewjoachim/python-coverage-comment-action@v2
+        uses: ewjoachim/python-coverage-comment-action@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
